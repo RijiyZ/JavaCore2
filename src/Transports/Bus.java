@@ -3,6 +3,7 @@ package Transports;
 import Enums.Capacity;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Bus extends Transport implements Competing {
 
@@ -71,5 +72,23 @@ public class Bus extends Transport implements Competing {
         for (Bus bus : buses) {
             System.out.println(bus.getBrand() + " " + bus.getModel() + " " + bus.getEngineVolume() + " " + bus.getCapacity());
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bus bus = (Bus) o;
+        return capacity == bus.capacity;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(capacity);
+    }
+
+    @Override
+    public String toString() {
+        return getBrand() + getModel();
     }
 }

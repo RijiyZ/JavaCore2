@@ -46,21 +46,6 @@ public class Mechanics<B extends Transport> {
         this.vehicle = vehicle;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Mechanics<?> mechanics = (Mechanics<?>) o;
-        return Objects.equals(firstName, mechanics.firstName) &&
-                Objects.equals(familyName, mechanics.familyName) &&
-                Objects.equals(companyWork, mechanics.companyWork) &&
-                Objects.equals(vehicle, mechanics.vehicle);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, familyName, companyWork, vehicle);
-    }
     public void performMaintenance() {
         System.out.println(getFirstName() + " " + getFamilyName() + " провести техобслуживание " + getVehicle().getBrand() + " " + getVehicle().getModel());
     }
@@ -93,5 +78,23 @@ public class Mechanics<B extends Transport> {
     }
     public void runTO() {
         System.out.println("Техобслуживание транспорта");
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + familyName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanics<?> mechanics = (Mechanics<?>) o;
+        return Objects.equals(firstName, mechanics.firstName) && Objects.equals(familyName, mechanics.familyName) && Objects.equals(companyWork, mechanics.companyWork) && Objects.equals(vehicle, mechanics.vehicle);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, familyName, companyWork, vehicle);
     }
 }

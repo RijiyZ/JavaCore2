@@ -3,6 +3,7 @@ package Transports;
 import Enums.BodyOfType;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Car extends Transport implements Competing {
 
@@ -73,5 +74,23 @@ public class Car extends Transport implements Competing {
         for (Car car : cars) {
             System.out.println(car.getBrand() + " " + car.getModel() + " " + car.getEngineVolume() + " " +  car.getBodyOfType());
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return bodyOfType == car.bodyOfType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bodyOfType);
+    }
+
+    @Override
+    public String toString() {
+        return getBrand() + getModel();
     }
 }

@@ -8,7 +8,9 @@ import Transports.Transport;
 import Transports.Truck;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -230,6 +232,16 @@ public class Main {
         mechanicTruck3.performMaintenance();
         mechanicTruck4.performMaintenance();
 
+        System.out.println("");
+
+        Map<Transport, Mechanics> transportMechanicsHashMap = new HashMap<>();
+
+        transportMechanicsHashMap.put(car1, mechanicCar1);
+        transportMechanicsHashMap.put(bus1, mechanicBus1);
+        transportMechanicsHashMap.put(truck1, mechanicTruck1);
+
+        System.out.println("Мапы: " + transportMechanicsHashMap);
+
         System.out.println();
         STO sto = new STO();
         sto.addTransport(car1); sto.addTransport(car2); sto.addTransport(car3); sto.addTransport(car4);
@@ -263,6 +275,5 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
-
 
 }

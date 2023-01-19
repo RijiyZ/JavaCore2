@@ -31,6 +31,7 @@ public abstract class Transport {
     }
 
     // геттеры и сеттеры
+
     public String getBrand() {
         return brand;
     }
@@ -50,6 +51,8 @@ public abstract class Transport {
     public double getEngineVolume() {
         return engineVolume;
     }
+
+
 
     public void setEngineVolume(double engineVolume) {
         if (engineVolume <= 0) {
