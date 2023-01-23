@@ -74,14 +74,12 @@ public class Driver<B extends Transport> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Driver<Transport> driver = (Driver<Transport>) o;
-        return Double.compare(driver.experience, experience) == 0 &&
-                Objects.equals(fullName, driver.fullName) &&
-                Objects.equals(driversLicense, driver.driversLicense);
+        Driver<?> driver = (Driver<?>) o;
+        return driversLicense == driver.driversLicense && Double.compare(driver.experience, experience) == 0 && Objects.equals(fullName, driver.fullName) && Objects.equals(vehicle, driver.vehicle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, driversLicense, experience);
+        return Objects.hash(fullName, driversLicense, experience, vehicle);
     }
 }

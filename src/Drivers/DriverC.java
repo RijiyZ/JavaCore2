@@ -3,6 +3,7 @@ package Drivers;
 import Transports.Truck;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DriverC extends Driver<Truck> {
 
@@ -34,5 +35,25 @@ public class DriverC extends Driver<Truck> {
             System.out.println("Вщдитель категории <" + CategoryDriverC.C + "> " +
                     driverC.getFullName() + ": стаж работы " + driverC.getExperience() + " лет");
         }
+    }
+
+    @Override
+    public String
+    toString() {
+        return "ФИО: " + getFullName() + " Транспорт: " + getVehicle();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        DriverC driverC = (DriverC) o;
+        return categoryDriverC == driverC.categoryDriverC;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), categoryDriverC);
     }
 }

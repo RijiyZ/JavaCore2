@@ -3,6 +3,7 @@ package Drivers;
 import Transports.Bus;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DriverD extends Driver<Bus> {
 
@@ -28,6 +29,24 @@ public class DriverD extends Driver<Bus> {
         this.categoryDriverD = categoryDriverD;
     }
 
+    @Override
+    public String toString() {
+       return "ФИО: " + getFullName() + " Транспорт: " + getVehicle();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        DriverD driverD = (DriverD) o;
+        return categoryDriverD == driverD.categoryDriverD;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), categoryDriverD);
+    }
 
     public static void driversDInTheList(List<Driver<Bus>> driversD) {
         for (Driver<Bus> driverD : driversD) {

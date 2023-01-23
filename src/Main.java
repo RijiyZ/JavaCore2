@@ -7,10 +7,9 @@ import Transports.Car;
 import Transports.Transport;
 import Transports.Truck;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static Enums.Capacity.ESPEC_BIG;
 
 public class Main {
     public static void main(String[] args) {
@@ -249,12 +248,53 @@ public class Main {
         sto.addTransport(bus1); sto.addTransport(bus2); sto.addTransport(bus3); sto.addTransport(bus4);
 
         System.out.println();
-        System.out.println("Диагностика трансоорта: ");
+        System.out.println("Диагностика транспорта: ");
         service( // Диагностика
                 car1, car2, car3, car4,
                 truck1, truck2, truck3, truck4,
-                bus1, bus2, bus3, bus3
-        );
+                bus1, bus2, bus3, bus3);
+
+        // HashSet и Iterator HomeWork
+
+        Bus bus10 = new Bus("Auto", "Bus", 4.5,ESPEC_BIG);
+        Car car10 = new Car("Auto", "Car", 4.5, BodyOfType.SEDAN);
+        Truck truck10 = new Truck("Auto", "Track", 4.5,LoadCapacity.N3);
+
+        Driver<Bus> driverD10 = new DriverD("Водитель Автобус 10", true, 17.5, bus10, CategoryDriverD.D);
+        Driver<Car> driverB10 = new DriverB("Водитель Кара 10", true, 17.5, car10, CategoryDriverB.B);
+        Driver<Truck> driverC10 = new DriverC("Водитель Трака 10", true, 17.5, truck10, CategoryDriverC.C);
+
+        Set<Driver> driverHashSet1 = new HashSet<>();
+        driverHashSet1.add(driverB10);
+        driverHashSet1.add(driverC10);
+        driverHashSet1.add(driverD10);
+        driverHashSet1.add(driverB3);
+        driverHashSet1.add(driverC2);
+        driverHashSet1.add(driverD1);
+
+       // System.out.println(driverHashSet1);
+
+        Set<Driver> driverHashSet2 = new HashSet<>();
+        driverHashSet2.add(driverD10);
+        driverHashSet2.add(driverB3);
+        driverHashSet2.add(driverC2);
+        driverHashSet2.add(driverD1);
+        driverHashSet2.add(driverD3);
+        driverHashSet2.add(driverD2);
+        driverHashSet2.add(driverB10);
+
+       // System.out.println(driverHashSet2);
+
+        Set<Driver> driverHashSet3 = new HashSet<>(driverHashSet1);
+        driverHashSet3.addAll(driverHashSet2);
+        // System.out.println(driverHashSet3);
+
+        System.out.println("\nHashSet и Iterator HomeWork: \n");
+
+        Iterator<Driver> iterator = driverHashSet3.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
 
     }
 
@@ -275,5 +315,4 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
-
 }
